@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Equipment Catalog</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+<body>
+
+    <div class="nav">
+    <div class="logo">
+    <img src="../assets/images/logo.png" width="300px" alt="logo" srcset="">
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu(event)">
+        <span>&#9776;</span>
+    </div>
+
+      <div class="nav_ele" id="navMenu" >
+          <ul class="mini_nav">
+              <a href="#home"><li>Home</li></a>
+              <a href="#catalog"><li>Equipments</li></a>
+              <a href="#contact"><li>Contact</li></a>
+              <a href="../Files.html"><li>Links</li></a>
+                 <li>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </button>
+</li>
+          </ul>
+      </div>
+  </div>
+
+
+<div class="home" id="home">
+  <div class="heading typing_animation">
+    <p class="firstline">Welcome to the Lab Equipment Catalog – CSIR-CECRI</p>
+    <p class="secondline">Empowering Innovation Through Access and Awareness</p>
+  </div>
+
+  <div class="details text">
+    This internal catalog is designed to provide quick access to essential information about the lab instruments and machinery used within our facility. Whether you're a researcher, student, or technical staff, this platform helps you:
+  </div>
+
+  <ul class="features list-disc list-inside pl-6 mt-4 text-lg text-gray-800 dark:text-gray-300">
+    <li>📷 View equipment photos</li>
+    <li>🧾 Understand key specifications</li>
+    <li>📘 Download user manuals</li>
+    <li>🛠️ Report issues or request support <em>(feature coming soon)</em></li>
+  </ul>
+
+  <p class="text-center italic text-sm text-gray-500 mt-6">
+    Built with ❤️ by a CECRI contributor, for smoother research workflows.
+  </p>
+</div>
+
+ 
+  <div id="catalog" class="catalog">
+
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search equipment by name, lab, or description..." />
+    </div>
+    <div class="card">
+      <img src="assets/images/Laboratory oven.jpg" alt="Equipment 1">
+      <h2>Laboratory oven</h2>
+      <p><strong>Lab:</strong> Tapsun 1st Floor</p>
+      <p><strong>Description:</strong> Heating </p>
+      <p><strong>Specifications:</strong> ******** </p>
+      <p><strong>Incharge:</strong> Unknown </p>
+      <div class="card-buttons">
+        <a class="report-btn"
+        data-equipment="Laboratory oven"
+        data-incharge="balachandarravi71@gmail.com"
+        href="#">Report Issue</a>
+        <a class="manual-btn" href="assets/manuals/equipment1-manual.pdf" target="_blank" download>Download Manual</a>
+      </div>
+    </div>
+
+    <p id="no-results" style="display: none; text-align: center; font-size: 1.2rem; color: gray; margin-top: 1rem;">
+      No matching equipment found.
+    </p>
+    
+
+    <!-- Equipment Cards 2–5 (unchanged) -->
+    <div class="card">
+      <img src="assets/images/IMG-20250801-WA0002.jpg" alt="Equipment 2">
+      <h2>Equipment Name 2</h2>
+      <p><strong>Lab:</strong> Physics Lab</p>
+      <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+      <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+      <p><strong>Incharge:</strong> Unknown </p>
+      <div class="card-buttons">
+        <a class="report-btn"
+        data-equipment="Spectrometer 200"
+        data-incharge="nnarmatha1403@gmail.com"
+        href="#">Report Issue</a>
+        <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+      </div>
+    </div>
+    
+
+      <!-- Equipment Cards 2–5 (unchanged) -->
+      <div class="card">
+        <img src="assets/images/IMG-20250801-WA0003.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+        <div class="card">
+        <img src="assets/images/IMG-20250801-WA0004.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Wet Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+      
+        <div class="card">
+        <img src="assets/images/IMG-20250801-WA0005.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0006.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+                <div class="card">
+        <img src="assets/images/IMG-20250801-WA0007.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+                <div class="card">
+        <img src="assets/images/IMG-20250801-WA0008.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+                <div class="card">
+        <img src="assets/images/IMG-20250801-WA0009.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+<div class="card">
+        <img src="assets/images/IMG-20250801-WA0010.jpg" alt="Equipment 3">
+        <h2>Equipment Name 10 </h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/IMG-20250801-WA0011.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0012.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+     <div class="card">
+        <img src="assets/images/IMG-20250801-WA0013.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0014.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0015.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0016.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0017.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0018.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+     <div class="card">
+        <img src="assets/images/IMG-20250801-WA0019.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0020.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0021.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0022.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+           <div class="card">
+        <img src="assets/images/IMG-20250801-WA0023.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+     <div class="card">
+        <img src="assets/images/IMG-20250801-WA0024.jpg" alt="Equipment 3">
+        <h2>Equipment Name 3</h2>
+        <p><strong>Lab:</strong> Physics Lab</p>
+        <p><strong>Description:</strong> Digital Oscilloscope for circuit analysis.</p>
+        <p><strong>Specifications:</strong> 100 MHz, 4 channels</p>
+        <p><strong>Incharge:</strong> Unknown </p>
+        <div class="card-buttons">
+          <a class="report-btn"
+          data-equipment="Spectrometer 200"
+          data-incharge="nnarmatha1403@gmail.com"
+          href="#">Report Issue</a>
+          <a class="manual-btn" href="assets/manuals/equipment2-manual.pdf" target="_blank" download>Download Manual</a>
+        </div>
+      </div>
+
+
+
+  </div>
+
+
+  
+
+  <div class="contact" id="contact">
+    <div class="contact-container">
+      <h2 class="contact-title">Get in Touch</h2>
+      <p class="contact-subtitle">We’d love to hear from you. Send us a message!</p>
+      <form action="https://formspree.io/f/xbjnnyar" method="POST" class="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Full Name" required />
+          <input type="email" name="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-row">
+          <input type="text" name="subject" placeholder="Subject" />
+          <input type="tel" name="phone" placeholder="Phone Number" />
+        </div>
+        <textarea name="message" rows="6" placeholder="Your Message..." required></textarea>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+  
+
+
+
+  <footer class="footer">
+    <ul>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="https://balachandarravi.github.io/">Services</a></li>
+      <li><a href="#home">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    
+    <p class="copyright">
+      © **** **** &nbsp;| &nbsp;All Rights Reserved &nbsp;|&nbsp; &nbsp;<i class="fa fa-phone"></i> +91-9585440507
+    </p>
+  </footer>
+  
+  
+  <!-- Scripts -->
+  <script src="scripts/script.js"></script>
+</body>
+</html>
+
