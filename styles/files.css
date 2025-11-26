@@ -208,4 +208,139 @@
                 padding: 20px;
             }
         }
-    
+    /* Tablet Styles */
+        @media (max-width: 1024px) {
+            .container {
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            th, td {
+                padding: 14px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 0.95em;
+            }
+
+            .search-section {
+                padding: 20px 15px;
+            }
+
+            .search-box input {
+                padding: 12px 45px 12px 15px;
+                font-size: 14px;
+            }
+
+            .search-icon {
+                right: 15px;
+                font-size: 18px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            /* Convert table to card layout on mobile */
+            .table-wrapper {
+                box-shadow: none;
+            }
+
+            table {
+                border: 0;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tbody tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 2px solid #e9ecef;
+                border-radius: 10px;
+                padding: 15px;
+                background: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            table tbody tr:hover {
+                background: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            table tbody td {
+                display: block;
+                padding: 8px 0;
+                border: none;
+                text-align: left;
+            }
+
+            table tbody td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #667eea;
+                display: block;
+                margin-bottom: 5px;
+                font-size: 0.85em;
+                text-transform: uppercase;
+            }
+
+            .doc-name {
+                font-size: 1.1em;
+                margin-bottom: 5px;
+            }
+
+            .download-btn {
+                width: 100%;
+                margin-top: 10px;
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+
+            .no-results {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .header p {
+                font-size: 0.9em;
+            }
+
+            .search-box input {
+                font-size: 13px;
+            }
+
+            table tbody tr {
+                padding: 12px;
+            }
+        }
