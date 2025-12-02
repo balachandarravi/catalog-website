@@ -1,4 +1,3 @@
-
 // ---------------- Search Bar ----------------
 document.getElementById("search-input")?.addEventListener("input", function () {
   const filter = this.value.toLowerCase();
@@ -21,59 +20,79 @@ document.getElementById("search-input")?.addEventListener("input", function () {
   }
 });
 
-
 // ------------------ REPORT ISSUE --------------------
-
 document.querySelectorAll(".report-btn").forEach(button => {
   button.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default action
+    event.preventDefault();
 
     var equipmentName = encodeURIComponent(this.dataset.equipment);  
     var inchargeEmail = encodeURIComponent(this.dataset.incharge);  
 
-    var formURL = `https://docs.google.com/forms/d/e/1FAIpQLScG83Fooj9YG6lC5Vykg4D3VXoaOCJoLw88lsnx6p-Z90iDBw/viewform?usp=pp_url&
-entry.1047378601=${equipmentName}&
-entry.1457660674=${inchargeEmail}`;
+    var formURL = `https://docs.google.com/forms/d/e/1FAIpQLScG83Fooj9YG6lC5Vykg4D3VXoaOCJoLw88lsnx6p-Z90iDBw/viewform?usp=pp_url&entry.1047378601=${equipmentName}&entry.1457660674=${inchargeEmail}`;
 
-    window.open(formURL, "_blank");  // Open the form with pre-filled data
+    window.open(formURL, "_blank");
   });
 });
 
-// ============= HAMBURGER ==================
+// ============= IMPROVED HAMBURGER MENU ==================
+function toggleMenu(event) {
+  if (event) {
+    event.stopPropagation();
+  }
+  
+  const navMenu = document.getElementById('navMenu');
+  const hamburger = document.querySelector('.hamburger');
+  
+  if (!navMenu || !hamburger) return;
+  
+  navMenu.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  
+  // Prevent body scroll when menu is open
+  if (navMenu.classList.contains('open')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
 
 // Close menu when clicking outside
 document.addEventListener('click', function(event) {
   const navMenu = document.getElementById('navMenu');
   const hamburger = document.querySelector('.hamburger');
   
-  // Check if the menu is open and the click is outside the menu and hamburger
+  if (!navMenu || !hamburger) return;
+  
   if (navMenu.classList.contains('open') && 
       !navMenu.contains(event.target) && 
       !hamburger.contains(event.target)) {
-    
-    // Close the menu
     navMenu.classList.remove('open');
     hamburger.classList.remove('active');
+    document.body.style.overflow = '';
   }
 });
 
-// Modify the existing toggleMenu function to use stopPropagation
-function toggleMenu(event) {
-  if (event) {
-    event.stopPropagation(); // Prevent the click from being caught by the document click handler
-  }
-  
-  const navMenu = document.getElementById('navMenu');
-  const hamburger = document.querySelector('.hamburger');
-  
-  navMenu.classList.toggle('open');
-  hamburger.classList.toggle('active');
-}
 
 
-// --------------------------------------------
+// Close menu on window resize
+let resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+    if (window.innerWidth > 768) {
+      const navMenu = document.getElementById('navMenu');
+      const hamburger = document.querySelector('.hamburger');
+      
+      if (navMenu && hamburger) {
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  }, 250);
+});
 
-  // Theme Toggle Function
+// ============= THEME TOGGLE ==================
 function toggleTheme() {
   const html = document.documentElement;
   const icon = document.getElementById('themeIcon');
@@ -97,9 +116,8 @@ window.addEventListener('DOMContentLoaded', () => {
   
   if (savedTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    icon.className = 'fas fa-sun';
+    if (icon) icon.className = 'fas fa-sun';
+  } else {
+    if (icon) icon.className = 'fas fa-moon';
   }
 });
-
-
-

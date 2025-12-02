@@ -34,41 +34,65 @@
   --border-color: #2c3e50;
 }
 
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 90px;
+}
+
+/* ===== IMPROVED THEME TOGGLE ===== */
 .theme-toggle {
-  background: var(--input-border);
-  border: none;
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  border: 2px solid #ddd;
   border-radius: 50px;
   width: 60px;
-  height: 30px;
+  height: 32px;
   cursor: pointer;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   padding: 0;
+  overflow: hidden;
 }
 
 .theme-toggle:hover {
-  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+  transform: scale(1.05);
 }
 
 .theme-toggle i {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  color: #fff;
+  font-size: 0.9rem;
+  transition: all 0.4s ease;
+  z-index: 1;
 }
 
 .theme-toggle i.fa-moon {
-  left: 8px;
+  left: 10px;
+  color: #ffd700;
+  opacity: 1;
 }
 
 .theme-toggle i.fa-sun {
-  right: 8px;
+  right: 10px;
+  color: #fff;
+  opacity: 0;
 }
 
 [data-theme="dark"] .theme-toggle {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #764ba2;
+}
+
+[data-theme="dark"] .theme-toggle i.fa-moon {
+  opacity: 0;
+  left: -20px;
+}
+
+[data-theme="dark"] .theme-toggle i.fa-sun {
+  opacity: 1;
+  right: 10px;
+  color: #ffd700;
 }
 
 .theme-toggle::before {
@@ -79,129 +103,184 @@
   background: white;
   border-radius: 50%;
   top: 3px;
-  left: 3px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  left: 4px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 2;
 }
 
 [data-theme="dark"] .theme-toggle::before {
-  left: calc(100% - 27px);
+  left: calc(100% - 28px);
+  background: #2c3e50;
 }
 
 /* ===== General Reset & Font ===== */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    font-family: 'Segoe UI', sans-serif;
-    scroll-behavior: smooth;
-  }
-  /* ===== Body & Layout ===== */
-  body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ===== Body & Layout ===== */
+html {
+  scroll-padding-top: 12vh;
+}
+
+body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background 0.3s ease, color 0.3s ease;
-  padding-top: 40px;
-  }
-  
-  /* ============NAV=============== */
+  padding-top: 0;
+  overflow-x: hidden;
+}
 
-  .nav {
-    position: fixed; 
-    width: 100%; 
-    z-index: 1000; 
-    background-color: var(--nav-bg);
-    box-shadow: 10px 10px 15px var(--nav-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-    height: 12vh; 
-    font-size: 30px;
-    opacity: 85%;
-    top: 0; left: 0; width: 100%;
-  }
-  
-  .mini_nav li {
-   list-style-type: none;
-  padding: 0; /* Remove all padding */
+/* ============NAV=============== */
+.nav {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--nav-bg);
+  box-shadow: 10px 10px 15px var(--nav-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  height: 12vh;
+  font-size: 30px;
+  opacity: 95%;
+  top: 0;
+  left: 0;
+}
+
+.mini_nav li {
+  list-style-type: none;
+  padding: 0;
   color: var(--text-primary);
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 20px;
-  }
-  
-  .mini_nav a:hover li{
- 
-    color: #1dc3d9;
-    transition: color 0.3s ease
-   
-  }
+}
 
-  .nav_ele {
-    display: flex;
-    align-items: center;
-    
-  }
-  
-  .mini_nav {
- display: flex;
+.mini_nav a:hover li {
+  color: #1dc3d9;
+  transition: color 0.3s ease;
+}
+
+.nav_ele {
+  display: flex;
+  align-items: center;
+}
+
+.mini_nav {
+  display: flex;
   margin-top: 0;
   margin-left: 0;
   justify-content: space-between;
-  align-items: center; /* Add this */
-  gap: 1rem; /* Add gap for better spacing */
-  }
-  .logo img {
-    max-width: 90px; /* Adjust size as needed */
-    height: 50px;
-    display: block;
-    margin-left: 20px; /* Adjust as needed */
-    border-radius: 10px; /* Adjust for smoother edges */
-    
-  }  
-  
-  .mini_nav a {
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo img {
+  max-width: 90px;
+  height: 50px;
+  display: block;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+.mini_nav a {
   color: var(--text-primary);
   text-decoration: none;
   position: relative;
   display: inline-block;
-  padding: 10px 20px; /* Move padding from li to a */
-  }
-  
-  .mini_nav a:last-child {
-    margin-right: 0; 
-  }
-  
-  .mini_nav a.active {
-    color: rgba(20, 38, 96, 0.847);
-  }
-  
-  .mini_nav a.active::after {
-    content: "";
+  padding: 10px 20px;
+}
+
+.mini_nav a:last-child {
+  margin-right: 0;
+}
+
+.mini_nav a.active {
+  color: rgba(20, 38, 96, 0.847);
+}
+
+.mini_nav a.active::after {
+  content: "";
   position: absolute;
   bottom: 0;
-  left: 10%; /* Start 10% from left */
-  right: 10%; /* End 10% from right */
+  left: 10%;
+  right: 10%;
   width: auto;
   height: 2px;
   background-color: rgba(255, 255, 255, 0.8);
-  }
+}
+
+/* ===== IMPROVED HAMBURGER MENU ===== */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: var(--text-primary);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger span::before,
+.hamburger span::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.hamburger span::before {
+  top: -8px;
+}
+
+.hamburger span::after {
+  top: 8px;
+}
+
+.hamburger.active span {
+  background: transparent;
+}
+
+.hamburger.active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.hamburger.active span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
 
 /* ============ Home Page ================ */
-
 .home {
-  min-height: 110vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0rem;
+  padding: 1rem;
   box-sizing: border-box;
   gap: 2rem;
-  margin-top: -95px;
   background: var(--bg-secondary);
+  
 }
 
 .heading {
@@ -245,16 +324,16 @@
   animation-delay: 2s;
 }
 
-.features{
-font-size: 1.5rem;
-justify-content: center;
-align-items: center;
+.features {
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.text-center{
+.text-center {
   font-size: 1.5rem;
-justify-content: center;
-align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes typing {
@@ -266,14 +345,13 @@ align-items: center;
   }
 }
 
-
   /* ===== Search Bar ===== */
 .search-container {
 
     display: flex;
     justify-content: center;
-    margin: -3rem 2rem 0 3rem;
-    padding-top: 10px;
+    margin: 0rem 2rem 0 3rem;
+  
     width: 100% ;
     
   }
@@ -301,7 +379,7 @@ align-items: center;
   /* ===== Catalog Section ===== */
  .catalog {
   min-height: 100vh; /* Ensure it fills at least the entire screen */
-  padding: 9.8rem 2rem 4rem 2rem; /* top right bottom left */
+  padding: 2rem 2rem 4rem 2rem; /* top right bottom left */
   display: flex;
   flex-wrap: wrap;
   gap: 4.5rem;
@@ -392,7 +470,7 @@ align-items: center;
 .contact {
   background: var(--bg-secondary);
   color: var(--text-color);
-  padding: 110px 20px;
+  padding: 29px 20px;
   display: flex;
   justify-content: center;
 }
@@ -680,7 +758,7 @@ body {
     padding: 1rem 0rem;
     box-sizing: border-box;
     gap: 2rem;
-    margin-top: 13px;
+    
   }
   
   .heading {
@@ -763,7 +841,6 @@ body {
 @media screen and (max-width: 480px) {
   .home {
     padding: 1rem 0.5rem;
-    margin-top: -60px;
       max-height: 90vh;
 }
   }
