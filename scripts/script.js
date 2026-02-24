@@ -28,8 +28,11 @@ document.querySelectorAll(".report-btn").forEach(button => {
     var equipmentName = encodeURIComponent(this.dataset.equipment);  
     var inchargeEmail = encodeURIComponent(this.dataset.incharge);  
 
-    var formURL = `https://docs.google.com/forms/d/e/1FAIpQLScG83Fooj9YG6lC5Vykg4D3VXoaOCJoLw88lsnx6p-Z90iDBw/viewform?usp=pp_url&entry.1047378601=${equipmentName}&entry.1457660674=${inchargeEmail}`;
-
+   var formURL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd_y7JjLhHymPbY5YvdRy0lK-1XkdvnyvwO95sQBHSEnubzPA/viewform" +
+  "?entry.662675588=" + equipmentName +
+  "&entry.1735823310=" + inchargeEmail;
+  
     window.open(formURL, "_blank");
   });
 });
