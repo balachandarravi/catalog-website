@@ -65,7 +65,7 @@ body {
 }
 
 /* ================================================================
-   NAV  (structure untouched, visual polish only)
+   NAV
    ================================================================ */
 .nav {
   position: fixed;
@@ -79,14 +79,14 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  height: 80px;
+  height: 90px;
   top: 0; left: 0;
   border-bottom: 1px solid var(--border-color);
 }
 
 .logo img {
-  max-width: 90px;
-  height: 50px;
+  max-width: 100px;
+  height: 75px;
   display: block;
   border-radius: 10px;
 }
@@ -105,7 +105,7 @@ body {
   list-style-type: none;
   color: var(--text-primary);
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -131,7 +131,7 @@ body {
 
 .mini_nav a.active li { color: var(--accent); }
 
-/* ===== THEME TOGGLE (unchanged) ===== */
+/* ===== THEME TOGGLE ===== */
 .theme-toggle {
   background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
   border: 2px solid #ddd;
@@ -204,7 +204,7 @@ body {
 .hamburger.active span::after       { top:0; transform:rotate(-45deg); }
 
 /* ================================================================
-   HOME SECTION  — gradient mesh + animations, same HTML
+   HOME SECTION
    ================================================================ */
 .home {
   position: relative;
@@ -218,7 +218,6 @@ body {
   overflow: hidden;
   scroll-margin-top: 80px;
 
-  /* layered radial gradient mesh over the existing bg-secondary colour */
   background:
     radial-gradient(ellipse 75% 55% at 15% 25%, rgba(29,195,217,0.11) 0%, transparent 60%),
     radial-gradient(ellipse 55% 50% at 85% 70%, rgba(102,126,234,0.09) 0%, transparent 55%),
@@ -226,7 +225,6 @@ body {
     var(--bg-secondary);
 }
 
-/* floating ambient orbs — pure CSS, no new HTML */
 .home::before,
 .home::after {
   content:'';
@@ -254,7 +252,6 @@ body {
   70%      { transform: translate(-18px,22px) scale(0.95); }
 }
 
-/* dot-grid texture overlay (no extra div needed — we use a layered bg) */
 .home {
   background-image:
     radial-gradient(circle, rgba(29,195,217,0.13) 1px, transparent 1px),
@@ -280,15 +277,26 @@ body {
   width: 100%;
 }
 
-/* Glowing accent underline after heading — CSS only */
 .heading::after {
   content:'';
   display:block;
-  width:72px; height:4px;
+  width:372px; height:4px;
   margin: 1rem auto 0;
   border-radius: 4px;
   background: linear-gradient(90deg, var(--accent), #667eea);
   box-shadow: 0 0 14px rgba(29,195,217,0.5);
+}
+
+/* ── NEON SETTLE — only change from original ── */
+@keyframes neon-settle {
+  0%   { opacity: 0; }
+  5%   { opacity: 0.85; text-shadow: 0 0 24px rgba(29,195,217,0.95), 0 0 8px rgba(29,195,217,0.6); }
+  10%  { opacity: 0.1;  text-shadow: none; }
+  18%  { opacity: 0.95; text-shadow: 0 0 32px rgba(29,195,217,0.8), 0 0 12px rgba(29,195,217,0.5); }
+  24%  { opacity: 0.2;  text-shadow: none; }
+  34%  { opacity: 1;    text-shadow: 0 0 18px rgba(29,195,217,0.6), 0 0 6px rgba(29,195,217,0.3); }
+  65%  { opacity: 1;    text-shadow: 0 0 8px rgba(29,195,217,0.2); }
+  100% { opacity: 1;    text-shadow: none; }
 }
 
 .firstline {
@@ -296,38 +304,29 @@ body {
   font-weight: 900;
   letter-spacing: -0.03em;
   font-family: 'Outfit', 'Trebuchet MS', sans-serif;
-  overflow: hidden;
-  white-space: nowrap;
   display: block;
-  width: 0;
+  white-space: normal;
+  overflow: visible;
+  width: auto;
   max-width: 100%;
-  animation: typing 2s forwards;
-  background: linear-gradient(135deg, var(--text-primary) 60%, var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: neon-settle 1.4s ease 0.3s forwards;
 }
 
 .secondline {
   font-size: clamp(1rem, 2.2vw, 1.8rem);
   font-weight: 600;
   letter-spacing: -0.01em;
-  overflow: hidden;
-  white-space: nowrap;
   display: block;
+  white-space: normal;
+  overflow: visible;
+  width: auto;
   max-width: 100%;
-  width: 0;
-  animation: typing 4s forwards;
-  animation-delay: 2s;
   color: var(--text-secondary);
   font-style: italic;
-  /* override gradient for subtitle */
-  -webkit-text-fill-color: var(--text-secondary);
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 100%; }
+  opacity: 0;
+  animation: neon-settle 1.4s ease 1.3s forwards;
 }
 
 /* Body copy box */
@@ -355,7 +354,6 @@ body {
 
 .details { margin-top: 1px; width: 100%; }
 
-/* Features list — subtle card tiles, no DOM change */
 .features {
   position: relative;
   z-index: 1;
@@ -409,7 +407,6 @@ body {
   align-items: flex-start;
   box-sizing: border-box;
   background: var(--bg-primary);
-  /* subtle horizontal rule texture */
   background-image: linear-gradient(rgba(29,195,217,0.03) 1px, transparent 1px);
   background-size: 100% 56px;
 }
@@ -437,14 +434,13 @@ body {
   color: var(--text-primary);
   border: 1.5px solid var(--input-border);
   width: 100%;
-  max-width: 520px;
-  padding: 0.82rem 1.2rem 0.82rem 3rem;
+  max-width: 680px;
+  padding: 0.82rem 2rem 0.82rem 3rem;
   font-size: 1rem;
   font-family: 'DM Sans', sans-serif;
   border-radius: 50px;
   box-shadow: 0 2px 10px var(--card-shadow);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  /* embedded search icon via inline SVG */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17' viewBox='0 0 24 24' fill='none' stroke='%231dc3d9' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 1rem center;
@@ -471,7 +467,6 @@ body {
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
   width: 300px;
   flex-shrink: 0;
-  /* scroll-reveal start state */
   opacity: 0;
   transform: translateY(18px);
 }
@@ -575,7 +570,7 @@ body {
 }
 
 /* ================================================================
-   CONTACT SECTION  (same HTML, better visuals)
+   CONTACT SECTION
    ================================================================ */
 .contact {
   position: relative;
@@ -587,7 +582,6 @@ body {
   overflow: hidden;
 }
 
-/* ambient glow behind the card */
 .contact::before {
   content:'';
   position:absolute;
@@ -610,19 +604,8 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* accent bar at top of contact card */
-.contact-container::before {
-  content:'';
-  display:block;
-  width:60px; height:4px;
-  background: linear-gradient(90deg, var(--accent), #667eea);
-  border-radius:4px;
-  margin-bottom: 1.4rem;
-  box-shadow: 0 0 12px rgba(29,195,217,0.4);
-}
-
 .contact-title {
-  font-family: 'Syne', 'Trebuchet MS', sans-serif;
+  font-family: 'Outfit', 'Trebuchet MS', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 8px;
@@ -706,7 +689,6 @@ body {
   background-color: var(--footer-bg);
   color: var(--footer-text);
   box-sizing: border-box;
-  /* thin accent top border */
   border-top: 3px solid var(--accent);
 }
 
@@ -742,7 +724,7 @@ body {
 }
 
 /* ================================================================
-   SCROLL-REVEAL  (triggered by tiny inline script in HTML)
+   SCROLL-REVEAL
    ================================================================ */
 .reveal {
   opacity: 0;
@@ -822,25 +804,14 @@ body {
   .home { padding: 1rem 1.2rem 2.5rem; gap: 1.5rem; }
   .heading { margin-top: 7rem; font-size: 1.4rem; }
 
+  /* ── same neon-settle on mobile, no separate animation ── */
   .firstline, .secondline {
-    font-size: 1.75rem;
     white-space: normal;
-    width: 100% !important;
+    width: auto;
     display: block;
-    opacity: 0;
-    -webkit-text-fill-color: unset;
-    background: none;
-    color: var(--text-primary);
   }
-  .secondline { color: var(--text-secondary); font-size: 1.2rem; }
-
-  .firstline  { animation: fade-in 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
-  .secondline { animation: fade-in 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards; }
-
-  @keyframes fade-in {
-    from { opacity:0; transform:translateY(12px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
+  .firstline  { font-size: 1.75rem; color: var(--text-primary);   animation: neon-settle 1.4s ease 0.3s forwards; }
+  .secondline { font-size: 1.2rem;  color: var(--text-secondary); animation: neon-settle 1.4s ease 1.3s forwards; }
 
   .text { font-size: 1rem; max-width: 100%; text-align: left; padding: 1rem 1.2rem; }
   .features { font-size: 1rem; max-width: 100%; }
@@ -864,7 +835,7 @@ body {
 @media screen and (max-width: 480px) {
   .nav { height: 70px; padding: 0 15px; }
   .nav_ele { top: 70px; height: calc(100vh - 70px); }
-  .logo img { max-width: 75px; height: 42px; }
+  .logo img { max-width: 85px; height: 55px; }
 
   .home { padding: 0.8rem 1rem 2rem; gap: 1.2rem; }
   .heading { margin-top: 6rem; font-size: 1.2rem; }
