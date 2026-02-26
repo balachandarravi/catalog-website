@@ -208,16 +208,17 @@ body {
    ================================================================ */
 .home {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem 4rem;
+  padding: 90px 2rem 2rem;
   box-sizing: border-box;
-  gap: 2rem;
+  gap: 1.5rem;
   overflow: hidden;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 90px;
 
   background:
     radial-gradient(ellipse 75% 55% at 15% 25%, rgba(29,195,217,0.11) 0%, transparent 60%),
@@ -400,6 +401,7 @@ body {
    ================================================================ */
 .catalog {
   min-height: 100vh;
+  scroll-margin-top: 90px;
   padding: 2rem 2rem 4rem;
   display: flex;
   flex-wrap: wrap;
@@ -576,6 +578,7 @@ body {
    ================================================================ */
 .contact {
   position: relative;
+  scroll-margin-top: 90px;
   background: var(--bg-secondary);
   color: var(--text-primary);
   padding: 60px 20px;
@@ -803,7 +806,7 @@ body {
   .theme-toggle { margin: 16px 22px; }
 
   /* HOME */
-  .home { padding: 1rem 1.2rem 2.5rem; gap: 1.5rem; }
+  .home { height: 100vh; min-height: 500px; padding: 80px 1.2rem 1.5rem; gap: 1.2rem; }
   .heading { margin-top: 0; font-size: 1.4rem; }
 
   /* ── same neon-settle on mobile, no separate animation ── */
@@ -836,8 +839,10 @@ body {
 
 /* ≤480px */
 @media screen and (max-width: 480px) {
+  html { scroll-padding-top: 70px; }
   .nav { height: 70px; padding: 0 15px; }
   .nav_ele { top: 70px; height: calc(100vh - 70px); }
+  .home, .catalog, .contact { scroll-margin-top: 70px; }
   .logo img { max-width: 75px; height: 42px; }
 
   .home { padding: 0.8rem 1rem 2rem; gap: 1.2rem; }
@@ -870,8 +875,10 @@ body {
 
 /* ≤360px */
 @media screen and (max-width: 360px) {
+  html { scroll-padding-top: 65px; }
   .nav { height: 65px; padding: 0 12px; }
   .nav_ele { top: 65px; height: calc(100vh - 65px); width: 100%; }
+  .home, .catalog, .contact { scroll-margin-top: 65px; }
   .logo img { max-width: 65px; height: 38px; }
   .heading { margin-top: 0; font-size: 1.1rem; }
   .firstline  { font-size: 1.3rem; }
