@@ -2,12 +2,14 @@
 document.getElementById("search-input")?.addEventListener("input", function () {
   const filter = this.value.toLowerCase();
   const cards = document.querySelectorAll(".card");
+  const isMobile = window.innerWidth <= 768;
 
   let matchCount = 0;
   cards.forEach((card) => {
     const text = card.textContent.toLowerCase();
     if (text.includes(filter)) {
-      card.style.display = "block";
+      card.style.display = isMobile ? "flex" : "";
+      card.style.flexDirection = isMobile ? "column" : "";
       matchCount++;
     } else {
       card.style.display = "none";

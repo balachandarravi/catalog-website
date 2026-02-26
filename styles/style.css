@@ -406,6 +406,7 @@ body {
   gap: 2rem;
   justify-content: center;
   align-items: flex-start;
+  align-content: flex-start;
   box-sizing: border-box;
   background: var(--bg-primary);
   background-image: linear-gradient(rgba(29,195,217,0.03) 1px, transparent 1px);
