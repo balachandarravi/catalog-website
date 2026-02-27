@@ -430,8 +430,8 @@ body {
   .text { font-size:1rem; max-width:100%; text-align:left; padding:1rem 1.2rem; }
   .features { font-size:1rem; max-width:100%; }
 
-  .catalog { padding:1.5rem 1rem 3rem; gap:1.2rem; flex-wrap:wrap; }
-  .search-container { width:100%; flex-basis:100%; padding:0.5rem 0 0; }
+  .catalog { padding:0.5rem 1rem 3rem; gap:1.2rem; flex-wrap:wrap; }
+  .search-container { width:100%; flex-basis:100%; padding:0 0 0; }
   .card { width:100%; max-width:100%; border-radius:var(--border-radius); }
 
   .contact { padding:40px 15px; }
@@ -457,8 +457,8 @@ body {
   .features { font-size:0.95rem; }
   .features li { padding:0.6rem 1rem; }
 
-  .catalog { padding:1rem 0.8rem 2rem; gap:1rem; flex-wrap:wrap; }
-  .search-container { width:100%; flex-basis:100%; padding:0.5rem 0 0; }
+  .catalog { padding:0.5rem 0.8rem 2rem; gap:1rem; flex-wrap:wrap; }
+  .search-container { width:100%; flex-basis:100%; padding:0; }
   .card { width:100%; max-width:100%; }
   .card img { height:165px; }
   .card h2 { font-size:1.05rem; }
