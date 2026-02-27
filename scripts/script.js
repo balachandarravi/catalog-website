@@ -40,26 +40,30 @@ document.querySelectorAll(".report-btn").forEach(button => {
 });
 
 // ============= IMPROVED HAMBURGER MENU ==================
-function toggleMenu(event) {
-  if (event) {
-    event.stopPropagation();
-  }
-  
-  const navMenu = document.getElementById('navMenu');
-  const hamburger = document.querySelector('.hamburger');
-  
-  if (!navMenu || !hamburger) return;
-  
-  navMenu.classList.toggle('open');
-  hamburger.classList.toggle('active');
-  
-  // Prevent body scroll when menu is open
-  if (navMenu.classList.contains('open')) {
-    document.body.style.overflow = 'hidden';
+// ── THEME TOGGLE ──
+// Replace your existing toggleTheme function with this in script.js
+
+function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
   } else {
-    document.body.style.overflow = '';
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
   }
 }
+
+// ── ON PAGE LOAD — sync toggle button icon with saved theme ──
+// Add this inside your DOMContentLoaded or at the bottom of script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  // If you have a sun/moon icon that needs updating, handle it here too
+});
 
 // Close menu when clicking outside
 document.addEventListener('click', function(event) {
