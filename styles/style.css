@@ -168,7 +168,7 @@ body {
 }
 .heading::after {
   content:''; display:block;
-  width:372px; height:4px;
+  width:min(372px, 90%); height:4px;
   margin:1rem auto 0; border-radius:4px;
   background:linear-gradient(90deg,var(--accent),#667eea);
   box-shadow:0 0 14px rgba(29,195,217,0.5);
