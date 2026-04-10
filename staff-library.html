@@ -6,6 +6,15 @@
   <title>Staff Document Library - Access Required</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --bg-light: #f8f9fa;
+      --text-dark: #2c3e50;
+      --text-muted: #6c757d;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,7 +23,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--primary-gradient);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -22,6 +31,7 @@
       padding: 20px;
     }
 
+    /* ========== AUTH SCREEN ========== */
     .auth-container {
       background: white;
       padding: 3rem;
@@ -40,16 +50,22 @@
       font-size: 4rem;
       color: #667eea;
       margin-bottom: 1.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     h1 {
       font-size: 2rem;
       margin-bottom: 0.5rem;
-      color: #2c3e50;
+      color: var(--text-dark);
     }
 
     .subtitle {
-      color: #6c757d;
+      color: var(--text-muted);
       margin-bottom: 2rem;
       font-size: 1rem;
     }
@@ -71,6 +87,7 @@
 
     .input-group input:focus {
       border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     .toggle-password {
@@ -79,14 +96,19 @@
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
-      color: #6c757d;
+      color: var(--text-muted);
       font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .toggle-password:hover {
+      color: #667eea;
     }
 
     .access-btn {
       width: 100%;
       padding: 1rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--primary-gradient);
       color: white;
       border: none;
       border-radius: 10px;
@@ -107,6 +129,10 @@
       font-size: 0.9rem;
       margin-top: 1rem;
       display: none;
+      background: #fee;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border-left: 4px solid #dc3545;
     }
 
     .error-message.show {
@@ -122,20 +148,23 @@
 
     .back-link {
       margin-top: 1.5rem;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       color: #667eea;
       text-decoration: none;
       font-weight: 500;
+      transition: gap 0.3s;
     }
 
     .back-link:hover {
-      text-decoration: underline;
+      gap: 0.8rem;
     }
 
-    /* Staff Library Content (hidden initially) */
+    /* ========== LIBRARY CONTENT ========== */
     .library-content {
       display: none;
-      background: white;
+      background: var(--bg-light);
       min-height: 100vh;
       width: 100%;
     }
@@ -145,76 +174,146 @@
     }
 
     .library-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--primary-gradient);
       color: white;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       text-align: center;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
-.logout-btn {
-  position: fixed;
-  top: 30px;
-  right: 35px;
-  padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid white;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
-  z-index: 1000;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+    .library-header h1 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
 
-.logout-btn:hover {
-  background: white;
-  color: #667eea;
-}
+    .library-header p {
+      opacity: 0.95;
+      font-size: 1.05rem;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 0.7rem 1.3rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .logout-btn:hover {
+      background: white;
+      color: #667eea;
+      transform: translateY(-2px);
+    }
+
+    .library-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .search-box {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      border: 2px solid #ddd;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 1rem center;
+      transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
 
     .documents-grid {
-      padding: 3rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .doc-card {
-      background: #f8f9fa;
+      background: white;
       border-radius: 15px;
       padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+      border: 1px solid #e9ecef;
+      display: flex;
+      flex-direction: column;
     }
 
     .doc-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: var(--shadow-hover);
+      border-color: #667eea;
     }
 
-    .doc-card h3 {
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-    }
-
-    .doc-card p {
-      color: #6c757d;
-      font-size: 0.9rem;
+    .doc-icon {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
+    .doc-card h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .doc-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      flex: 1;
+    }
+
+    .doc-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #e9ecef;
+    }
+
     .doc-download {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.3rem;
+      background: var(--primary-gradient);
       color: white;
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
+      font-size: 0.9rem;
       transition: all 0.3s;
+      margin-top: auto;
     }
 
     .doc-download:hover {
@@ -222,242 +321,160 @@
       box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
     }
 
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      background: white;
+      border-radius: 15px;
+      display: none;
+    }
+
+    .no-results.show {
+      display: block;
+    }
+
+    .no-results i {
+      font-size: 3rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* ========== MOBILE RESPONSIVE ========== */
     @media (max-width: 768px) {
+      body {
+        padding: 0;
+        align-items: flex-start;
+      }
+
       .auth-container {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
+        border-radius: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .lock-icon {
+        font-size: 3rem;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .library-header {
+        padding: 1.5rem 1rem 4rem;
+      }
+
+      .library-header h1 {
+        font-size: 1.5rem;
+        padding-right: 60px;
+      }
+
+      .library-header p {
+        font-size: 0.9rem;
+      }
+
+      .logout-btn {
+        top: 15px;
+        right: 15px;
+        padding: 0.6rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      .logout-text {
+        display: none;
+      }
+
+      .library-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .search-box {
+        margin-bottom: 1.5rem;
+      }
+
+      .search-box input {
+        font-size: 0.95rem;
+        padding: 0.9rem 0.9rem 0.9rem 2.8rem;
+        background-position: 0.8rem center;
       }
 
       .documents-grid {
         grid-template-columns: 1fr;
-        padding: 1.5rem;
+        gap: 1rem;
+      }
+
+      .doc-card {
+        padding: 1.2rem;
+      }
+
+      .doc-icon {
+        font-size: 2rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .doc-card h3 {
+        font-size: 1rem;
+      }
+
+      .doc-card p {
+        font-size: 0.85rem;
+      }
+
+      .doc-download {
+        width: 100%;
+        padding: 0.8rem;
       }
     }
 
-    /* Adjust for mobile */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
+    @media (max-width: 480px) {
+      .auth-container {
+        padding: 1.5rem 1rem;
+      }
 
-  .auth-container {
-    padding: 2rem 1.5rem;
-    max-width: 100%;
-  }
+      .lock-icon {
+        font-size: 2.5rem;
+      }
 
-  .lock-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
+      h1 {
+        font-size: 1.4rem;
+      }
 
-  h1 {
-    font-size: 1.5rem;
-  }
+      .subtitle {
+        font-size: 0.9rem;
+      }
 
-  .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
+      .input-group input {
+        padding: 0.9rem 2.5rem 0.9rem 0.9rem;
+        font-size: 0.95rem;
+      }
 
-  .input-group input {
-    padding: 0.9rem 3rem 0.9rem 0.9rem;
-    font-size: 0.95rem;
-  }
+      .library-header {
+        padding: 1.2rem 1rem 3.5rem;
+      }
 
-  .access-btn {
-    padding: 0.9rem;
-    font-size: 1rem;
-  }
+      .library-header h1 {
+        font-size: 1.3rem;
+      }
 
- .logout-btn {
-    top: 15px;
-    right: 15px;
-    padding: 0.7rem;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Make it circular */
-    justify-content: center;
-    gap: 0;
-  }
+      .logout-btn {
+        width: 38px;
+        height: 38px;
+        top: 12px;
+        right: 12px;
+        font-size: 0.95rem;
+      }
 
-  .logout-btn i {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-
-  .logout-btn::after {
-    content: none;
-  }
-
-  .library-header {
-    padding: 1.5rem 1rem;
-  }
-
-  .library-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .library-header p {
-    font-size: 0.9rem;
-  }
-
-  .documents-grid {
-    grid-template-columns: 1fr;
-    padding: 1.5rem 1rem;
-    gap: 1.5rem;
-  }
-
-  .doc-card {
-    padding: 1.2rem;
-  }
-
-  .doc-card h3 {
-    font-size: 1rem;
-  }
-
-  .doc-card p {
-    font-size: 0.85rem;
-  }
-
-  .doc-download {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  .auth-container {
-    padding: 1.5rem 1rem;
-  }
-
-  .lock-icon {
-    font-size: 2.5rem;
-  }
-
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  .subtitle {
-    font-size: 0.85rem;
-  }
-
-  .input-group input {
-    padding: 0.8rem 2.5rem 0.8rem 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .toggle-password {
-    right: 12px;
-    font-size: 1rem;
-  }
-
-  .access-btn {
-    padding: 0.8rem;
-    font-size: 0.95rem;
-  }
-
-  .back-link {
-    font-size: 0.9rem;
-  }
-
-  .logout-btn {
-    top: 12px;
-    right: 12px;
-    width: 42px;
-    height: 42px;
-    padding: 0.6rem;
-  }
-
-  .logout-btn i {
-    font-size: 1rem;
-  }
-
-  .library-header h1 {
-    font-size: 1.3rem;
-  }
-
-  .library-header p {
-    font-size: 0.85rem;
-  }
-
-  .documents-grid {
-    padding: 1rem 0.8rem;
-    gap: 1rem;
-  }
-
-  .doc-card {
-    padding: 1rem;
-  }
-
-  .doc-card h3 {
-    font-size: 0.95rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .doc-card p {
-    font-size: 0.8rem;
-    margin-bottom: 0.7rem;
-  }
-}
-
-/* Landscape orientation for phones */
-@media (max-width: 768px) and (orientation: landscape) {
-  body {
-    align-items: flex-start;
-    padding-top: 20px;
-  }
-
-  .auth-container {
-    margin: 20px auto;
-  }
-
-  .library-header {
-    padding: 1rem;
-  }
-}
-
-/* Show text on desktop */
-.logout-text {
-  display: inline;
-}
-
-/* Hide text on mobile, keep icon only */
-@media (max-width: 768px) {
-  .logout-text {
-    display: none;
-  }
-
-  .logout-btn {
-    top: 20px;
-    right: 20px;
-    padding: 0;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    justify-content: center;
-  }
-
-  .logout-btn i {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .logout-btn {
-    width: 40px;
-    height: 40px;
-    top: 14px;
-    right: 14px;
-  }
-
-  .logout-btn i {
-    font-size: 1.1rem;
-  }
-}
-
+      .library-container {
+        padding: 1rem 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -486,69 +503,118 @@
     </p>
     
     <a href="links.html" class="back-link">
-      <i class="fas fa-arrow-left"></i> Back to Links
+      <i class="fas fa-arrow-left"></i> <span>Back to Links</span>
     </a>
   </div>
 
-  <!-- Staff Library Content (shown after successful login) -->
+  <!-- Staff Library Content -->
   <div class="library-content" id="libraryContent">
-  <button class="logout-btn" onclick="logout()">
-  <i class="fas fa-sign-out-alt"></i>
-  <span class="logout-text">Logout</span>
-</button>
-
     <div class="library-header">
+      <button class="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="logout-text">Logout</span>
+      </button>
       <h1>📋 Staff Document Library</h1>
       <p>Confidential Documents & Internal Notings</p>
     </div>
 
-    <div class="documents-grid">
-      <!-- Example Staff Documents -->
-      <div class="doc-card">
-        <h3>📄 Staff Meeting Minutes - Jan 2024</h3>
-        <p>Internal meeting notes and action items</p>
-        <p><strong>Date:</strong> January 15, 2024</p>
-        <a href="staff-docs/meeting-minutes-jan.pdf" class="doc-download" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
+    <div class="library-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search documents...">
       </div>
 
-      <div class="doc-card">
-        <h3>📊 Budget Report Q4</h3>
-        <p>Quarterly financial report and projections</p>
-        <p><strong>Date:</strong> December 30, 2023</p>
-        <a href="staff-docs/budget-q4.pdf" class="doc-download" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
+      <div class="documents-grid" id="documentsGrid">
+        <!-- Staff Documents -->
+        <div class="doc-card" data-search="staff meeting minutes january 2024 notes action items">
+          <div class="doc-icon">📄</div>
+          <h3>Staff Meeting Minutes - Jan 2024</h3>
+          <p>Internal meeting notes and action items</p>
+          <div class="doc-meta">
+            <i class="far fa-calendar"></i>
+            <span>January 15, 2024</span>
+          </div>
+          <a href="staff-docs/meeting-minutes-jan.pdf" class="doc-download" target="_blank">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <div class="doc-card" data-search="budget report quarterly financial q4 projections">
+          <div class="doc-icon">📊</div>
+          <h3>Budget Report Q4</h3>
+          <p>Quarterly financial report and projections</p>
+          <div class="doc-meta">
+            <i class="far fa-calendar"></i>
+            <span>December 30, 2023</span>
+          </div>
+          <a href="staff-docs/budget-q4.pdf" class="doc-download" target="_blank">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <div class="doc-card" data-search="security guidelines protocols procedures internal">
+          <div class="doc-icon">🔐</div>
+          <h3>Security Guidelines</h3>
+          <p>Internal security protocols and procedures</p>
+          <div class="doc-meta">
+            <i class="far fa-calendar"></i>
+            <span>November 20, 2023</span>
+          </div>
+          <a href="staff-docs/security-guidelines.pdf" class="doc-download" target="_blank">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <div class="doc-card" data-search="hr policy updates human resources staff guidelines">
+          <div class="doc-icon">👥</div>
+          <h3>HR Policy Updates</h3>
+          <p>Latest HR policies and staff guidelines</p>
+          <div class="doc-meta">
+            <i class="far fa-calendar"></i>
+            <span>October 10, 2023</span>
+          </div>
+          <a href="staff-docs/hr-policy.pdf" class="doc-download" target="_blank">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <div class="doc-card" data-search="annual report yearly summary statistics">
+          <div class="doc-icon">📈</div>
+          <h3>Annual Report 2023</h3>
+          <p>Complete yearly performance summary and statistics</p>
+          <div class="doc-meta">
+            <i class="far fa-calendar"></i>
+            <span>December 15, 2023</span>
+          </div>
+          <a href="staff-docs/annual-report.pdf" class="doc-download" target="_blank">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <div class="doc-card" data-search="training schedule workshop sessions staff development">
+          <div class="doc-icon">🎓</div>
+          <h3>Training Schedule 2024</h3>
+          <p>Upcoming training sessions and workshops</p>
+          <div class="doc-meta">
+            <i class="far fa-calendar"></i>
+            <span>January 5, 2024</span>
+          </div>
+          <a href="staff-docs/training-schedule.pdf" class="doc-download" target="_blank">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
       </div>
 
-      <div class="doc-card">
-        <h3>🔐 Security Guidelines</h3>
-        <p>Internal security protocols and procedures</p>
-        <p><strong>Date:</strong> November 20, 2023</p>
-        <a href="staff-docs/security-guidelines.pdf" class="doc-download" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
+      <div class="no-results" id="noResults">
+        <i class="fas fa-search"></i>
+        <h3>No documents found</h3>
+        <p>Try adjusting your search terms</p>
       </div>
-
-      <div class="doc-card">
-        <h3>👥 HR Policy Updates</h3>
-        <p>Latest HR policies and staff guidelines</p>
-        <p><strong>Date:</strong> October 10, 2023</p>
-        <a href="staff-docs/hr-policy.pdf" class="doc-download" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
-      </div>
-
-      <!-- Add more staff documents here -->
     </div>
   </div>
 
   <script>
-    // HARDCODED PASSWORD - Change this to your desired password
+    // HARDCODED PASSWORD
     const STAFF_PASSWORD = "cecri2024";
-
-    // Session storage key
     const SESSION_KEY = "staffAccess";
 
     // Check if already logged in
@@ -564,49 +630,41 @@
       const passwordInput = document.getElementById('passwordInput');
       const type = passwordInput.type === 'password' ? 'text' : 'password';
       passwordInput.type = type;
-      
-      // Toggle icon
       this.classList.toggle('fa-eye');
       this.classList.toggle('fa-eye-slash');
     });
 
-    // Allow Enter key to submit
+    // Enter key submit
     document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        checkPassword();
-      }
+      if (e.key === 'Enter') checkPassword();
     });
 
-    // Check password function
+    // Check password
     function checkPassword() {
       const input = document.getElementById('passwordInput').value;
       const errorMessage = document.getElementById('errorMessage');
       
       if (input === STAFF_PASSWORD) {
-        // Correct password
         sessionStorage.setItem(SESSION_KEY, "true");
         showLibrary();
       } else {
-        // Wrong password
         errorMessage.classList.add('show');
         document.getElementById('passwordInput').value = '';
         document.getElementById('passwordInput').focus();
-        
-        // Hide error after 3 seconds
-        setTimeout(() => {
-          errorMessage.classList.remove('show');
-        }, 3000);
+        setTimeout(() => errorMessage.classList.remove('show'), 3000);
       }
     }
 
-    // Show library content
+    // Show library
     function showLibrary() {
       document.getElementById('authContainer').classList.add('hidden');
       document.getElementById('libraryContent').classList.add('show');
-      document.body.style.background = '#f4f4f4';
+      document.body.style.background = '#f8f9fa';
+      document.body.style.display = 'block';
+      document.body.style.alignItems = 'flex-start';
     }
 
-    // Logout function
+    // Logout
     function logout() {
       if (confirm('Are you sure you want to logout?')) {
         sessionStorage.removeItem(SESSION_KEY);
@@ -614,13 +672,35 @@
       }
     }
 
-    // Prevent back button access after logout
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const docCards = document.querySelectorAll('.doc-card');
+    const noResults = document.getElementById('noResults');
+    const documentsGrid = document.getElementById('documentsGrid');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        docCards.forEach(card => {
+          const searchText = (card.dataset.search + ' ' + card.textContent).toLowerCase();
+          const matches = searchText.includes(query);
+          card.style.display = matches ? '' : 'none';
+          if (matches) visibleCount++;
+        });
+
+        const shouldShowNoResults = visibleCount === 0 && query !== '';
+        noResults.classList.toggle('show', shouldShowNoResults);
+        documentsGrid.style.display = shouldShowNoResults ? 'none' : 'grid';
+      });
+    }
+
+    // Prevent back button after logout
     window.addEventListener('pageshow', function(event) {
       if (event.persisted) {
         const isLoggedIn = sessionStorage.getItem(SESSION_KEY);
-        if (!isLoggedIn) {
-          location.reload();
-        }
+        if (!isLoggedIn) location.reload();
       }
     });
   </script>
