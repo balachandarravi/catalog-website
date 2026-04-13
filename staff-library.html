@@ -28,7 +28,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 10px;
     }
 
     /* ========== AUTH SCREEN ========== */
@@ -173,25 +173,46 @@
       display: block;
     }
 
-    .library-header {
-      background: var(--primary-gradient);
-      color: white;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
+.library-header {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 1.5rem 2rem; /* Reduced from 2.5rem */
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
 
-    .library-header h1 {
-      font-size: 2rem;
-      color: white;
-      margin-bottom: 0.5rem;
-    }
+.library-header h1 {
+  font-size: 1.6rem; /* Reduced from 2rem */
+  color: #ffffff !important;
+  margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+  font-weight: 700;
+  -webkit-text-fill-color: white;
+}
 
-    .library-header p {
-      opacity: 0.95;
-      font-size: 1.05rem;
-    }
+.library-header p {
+  opacity: 0.95;
+  font-size: 0.95rem; /* Reduced from 1.05rem */
+  color: #ffffff !important;
+  -webkit-text-fill-color: white;
+}
+
+/* Emoji size */
+.library-header > div {
+  font-size: 2rem !important; /* Reduced from 2.5rem */
+  margin-bottom: 0.3rem !important; /* Reduced from 0.5rem */
+}
+
+.library-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem; /* Reduced from 2rem */
+}
+
+.search-box {
+  max-width: 600px;
+  margin: 0 auto 1.5rem; /* Reduced from 2rem */
+}
 
     .logout-btn {
       position: absolute;
@@ -216,17 +237,6 @@
       background: white;
       color: #667eea;
       transform: translateY(-2px);
-    }
-
-    .library-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .search-box {
-      max-width: 600px;
-      margin: 0 auto 2rem;
     }
 
     .search-box input {
@@ -364,16 +374,16 @@
       }
 
       .library-header {
-        padding: 1.5rem 1rem 4rem;
+       padding: 1.2rem 1rem;
       }
 
       .library-header h1 {
-        font-size: 1.5rem;
-        padding-right: 60px;
+    font-size: 1.3rem;
+    padding-right: 60px;
       }
 
       .library-header p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
 
       .logout-btn {
@@ -431,6 +441,15 @@
         width: 100%;
         padding: 0.8rem;
       }
+
+        .library-header > div {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .library-container {
+    padding: 1rem;
+  }
     }
 
     @media (max-width: 480px) {
@@ -509,14 +528,15 @@
 
   <!-- Staff Library Content -->
   <div class="library-content" id="libraryContent">
-    <div class="library-header">
-      <button class="logout-btn" onclick="logout()">
-        <i class="fas fa-sign-out-alt"></i>
-        <span class="logout-text">Logout</span>
-      </button>
-      <h1>📋 Staff Document Library</h1>
-      <p>Confidential Documents & Internal Notings</p>
-    </div>
+<div class="library-header">
+  <button class="logout-btn" onclick="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    <span class="logout-text">Logout</span>
+  </button>
+  <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📋</div>
+  <h1>Staff Document Library</h1>
+  <p>Confidential Documents & Internal Notings</p>
+</div>
 
     <div class="library-container">
       <div class="search-box">
